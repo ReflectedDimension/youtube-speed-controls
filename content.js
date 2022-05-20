@@ -1,7 +1,7 @@
 function createContainer() {
   let container = document.createElement('div')
   container.className = 'pbspeed-container'
-  container.style = 'margin:0 20px; display:grid; grid-template-columns: auto auto; gap:10px;'
+  container.style = 'margin:0 14px; display:grid; grid-template-columns: auto auto; gap:10px;'
   // Control layout:
   // | Display | 0.25 0.50 0.75 1.00
   // | Current | 1.25 1.50 1.75 2.00
@@ -16,7 +16,6 @@ function createContainer() {
   let valEl = container.querySelector('.pbspeed-value')
   // Var the operational slider
   let slider = container.querySelector('#sliderinput')
-  
 
   let updateDisplay = function(){
     valEl.innerText = `${vid.playbackRate.toLocaleString(undefined, { minimumFractionDigits: 2 })}x`;
@@ -36,10 +35,8 @@ function createContainer() {
 
   container.querySelectorAll('.setrs > *').forEach(x => {
     x.addEventListener('click', () => vid.playbackRate = parseFloat(x.innerText).toFixed(2))
-    // height avail: 40 full, 20 row. 2x 2px padding; 20 - 4 = 16. container grid gap 2px; 16 - 2 = 14
-    // added CursorChange; elements more felxible
-      x.style = 'cursor: pointer; display: flex; font-size: 12px; align-items: center; line-height: normal; padding: 0px 2px;'
-    // deleted x.style block -> no effect 
+    // container height 48px => element height 48 / 2 = 24 px
+    x.style = 'font-size: 12px; line-height: normal; display: flex; align-items: center; cursor: pointer; padding: 0px 2px;'
   })
 
   return container
